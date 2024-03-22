@@ -275,17 +275,18 @@ namespace Game_Project_2.Screens
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-
-            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
-
-
             introProgress += gameTime.ElapsedGameTime;
 
             if (introProgress.TotalMilliseconds >= _menuSong.Duration.TotalMilliseconds - 18)
             {
                 introProgress = TimeSpan.Zero;
+                MediaPlayer.Stop();
                 MediaPlayer.Play(_menuSong);
             }
+
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+
+
 
 
 
